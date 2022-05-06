@@ -4,9 +4,11 @@ const {graphqlHTTP} = require('express-graphql');
 const schema = require('./schema/schema')
 const cors  = require('cors');
 const app = express();
+require('dotenv').config()
+
 
 // Connect To Database
-const DBUrl = 'mongodb+srv://amrarnous:1234567890@nodetuts.crsul.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const DBUrl = process.env.DB_URL
 mongoose.connect(DBUrl)
 mongoose.connection.once('open', () => {
     console.log('Connected To Database')
